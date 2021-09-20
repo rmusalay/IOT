@@ -9,7 +9,7 @@ import logging
 
 from final_iot import IOTmodel
 
-
+# Parameterized sensor test data and expected error messages
 @pytest.mark.parametrize(
     "data, error",
     [
@@ -123,6 +123,7 @@ from final_iot import IOTmodel
         ),
     ],
 )
+# pytest driver function to test the parametized data and assert it with the expected error messages
 def test_report_data(data, error):
     with pytest.raises(ValidationError) as errinfo:
         IOTmodel(**data)
