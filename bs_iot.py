@@ -15,7 +15,8 @@ class IOTmodel(BaseModel):
     event: Optional[str]
     sensor_type: Optional[str]
     data: Optional[dict]
-
+    
+  
     @root_validator
     def validate_data(cls, values):
         sensor_type, event, action, data = (
@@ -24,7 +25,7 @@ class IOTmodel(BaseModel):
             values.get("action"),
             values.get("data"),
         )
-
+         # validation rules for the sensor data fields
         if sensor_type == "entry":
             assert event in ["open", "close"], "event must be open or close"
             assert data is None
@@ -78,7 +79,7 @@ class IOTmodel(BaseModel):
 
 
 def report_data(iot, args):
-
+    # validate the input sensor data before sending it in the post request
     try:
         IOTmodel(**iot)
     except Exception as e:
@@ -157,7 +158,8 @@ def main():
                 continue
 
             report_data(packet, args)
-
+    
+    # Parse sensor data from the yaml file
     with open(args.script_path, "r") as stream:
         try:
             datalist = yaml.safe_load(stream)
