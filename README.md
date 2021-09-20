@@ -10,8 +10,6 @@ This program simulates a real world IOT base station by reading the sensor data 
 USAGE
 	Install the python dependencies by running pip -r install requirements.txt
 
-	The python program uses the following python libraries for 
-
 	usage: bs_iot.py [-h] -env ENV -system_serial SYSTEM_SERIAL -password
                     PASSWORD [-script_path SCRIPT_PATH]
            
