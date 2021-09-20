@@ -67,6 +67,8 @@
   sensor_serial: A4F63A4E
   event: close
   sensor_type: entry
+- action: delay
+  time: 00:00:2
 - action: report
   sensor_serial: E0DECC5C
   event: trigger
@@ -87,7 +89,7 @@
   event: trigger
   sensor_type: water
 - action: delay
-  time: 00:00:45.399
+  time: 00:00:3
 - action: report
   sensor_serial: F9C4F8CA
   event: close
