@@ -6,6 +6,7 @@ import requests
 from pydantic import BaseModel, Field
 from typing import Optional
 import logging
+import time
 
 
 class IOTmodel(BaseModel):
@@ -94,7 +95,10 @@ def report_data(iot, args):
     headers = {"Authorization": bearer}
 
     if iot["action"] == "delay":
-        logger.info("Delay logged for {time} ".format(time=iot["time"]))
+        secs = sum(int(x) * 60 ** i for i, x in enumerate(reversed(iot["time"].split(':'))))
+        time.sleep(secs)
+        logger.info("Delay logged for {time} ".format(time=secs)
+        
     else:
         try:
             response = requests.post(base_url + format_path, json=iot, headers=headers)
